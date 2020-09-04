@@ -38,7 +38,7 @@ class Agent:
 
     def send_message(self,message): 
         if(not self._guard_network("send_message")): 
-            return 
+            return
         self._network.send_message(message)
 
     @abc.abstractmethod

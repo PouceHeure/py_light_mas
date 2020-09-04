@@ -63,9 +63,10 @@ class CarSimulation(Simulation):
         super(CarSimulation, self).__init__(**kargs)
         self._env = RoadEnvironnemnt(50)
         a1 = CarAgent(name="agent_a1")
+        print(a1)
         self.add_agent(a1)
 
 if __name__ == "__main__":
-    sim = CarSimulation(wait_s=0.1)
-    sim.run()
+    sim = CarSimulation()
+    sim.run(wait_s=0.1)
 
