@@ -16,7 +16,7 @@ class Agent:
     def get_aid(self):
         return self._aid
 
-    def get_addess(self): 
+    def get_address(self): 
         return self._address
 
     def _guard_network(self,method_name): 

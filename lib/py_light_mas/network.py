@@ -39,3 +39,8 @@ class Network:
         get_to_agent = self.get_agent(get_to_agent_adress) 
         get_to_agent.event_new_message(message)
 
+    def broadcast_message(self,sender,content):
+        for address,agent in self._agents.items():
+            if(agent != sender):
+                m = Message(sender=sender.get_address(),dest=address,content=content)
+                self.send_message(m)
