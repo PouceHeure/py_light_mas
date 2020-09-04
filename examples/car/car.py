@@ -25,18 +25,18 @@ class RoadEnvironnemnt(Environnemnt):
         self._length_road = length_road
         self._cars_position = {}
 
-    def _init_ui(self):
+    def init_ui(self):
         n_cars = len(self._cars_position)
         self._display = pygame.display.set_mode((RoadEnvironnemnt.rect_W*self._length_road
                                                 ,RoadEnvironnemnt.rect_H*n_cars))
-    def _init_road(self):
+    def init_road(self):
         board = [] 
         for _ in range(len(self._cars_position.keys())):
             board.append([RoadEnvironnemnt.CELL_EMPTY] * (self._length_road -1) + [RoadEnvironnemnt.CELL_OBSTACLE])
         self._road = board 
 
     def _update_road(self):
-        self._init_road()
+        self.init_road()
         i = 0
         for _,position in self._cars_position.items():
             self._road[i][position] = 1
@@ -111,8 +111,8 @@ class CarSimulation(Simulation):
             self.add_agent(a1)
             self._env.add_car(a1)
 
-        self._env._init_ui()
-        self._env._init_road()
+        self._env.init_ui()
+        self._env.init_road()
 
 if __name__ == "__main__":
     sim = CarSimulation(length_road=30)
