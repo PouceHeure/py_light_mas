@@ -55,4 +55,11 @@ class Agent:
     def event_new_tick(self,env): 
         self._on_event_new_tick(env) 
 
+
+    def __repr__(self):
+        return f"name: {self._name}"\
+                + f" address: {self._address}"\
+                + f" network: {self._network}"\
+                + f" aid: {self._aid}"\
+                + f" type: {self.__class__.__name__}"
         
