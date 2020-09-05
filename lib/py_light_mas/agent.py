@@ -1,17 +1,22 @@
 import abc
 
 
-
 class Agent: 
 
     COUNTER = 0
+    SIMULATION = None 
 
     def __init__(self,name=""): 
         self._name = name 
         self._address = None 
-        self._network = None 
+        self._network = None
+
         self._aid = Agent.COUNTER
         Agent.COUNTER += 1
+
+        if(Agent.SIMULATION != None): 
+            Agent.SIMULATION.add_agent(self)
+
 
     def get_aid(self):
         return self._aid
@@ -19,21 +24,23 @@ class Agent:
     def get_address(self): 
         return self._address
 
+
     def _guard_network(self,method_name): 
         if(self._network == None): 
             print(f"can't use {method_name} without connection")
             return False 
         return True 
 
+
     def connect(self,network): 
         address = network.register_agent(self)
         if(address != None): 
-            print(f"success connection to: {network.get_name()}")
             self._network = network
+            self._address = address
+            print(f"[{self}] success connection to: {network.get_name()}")        
         else: 
             print(f"fail to connect: {network.get_name()}")
-
-        self._address = address
+        
         return self._address
 
     def send_message(self,message): 
@@ -41,19 +48,29 @@ class Agent:
             return
         self._network.send_message(message)
 
+
+
+
     @abc.abstractmethod
-    def _on_event_new_message(self,message):
+    def on_event_new_message(self,message):
         pass 
 
     @abc.abstractmethod
-    def _on_event_new_tick(self,env): 
+    def on_event_new_signal(self,message):
+        pass 
+
+    @abc.abstractmethod
+    def on_event_new_tick(self,env): 
         pass 
 
     def event_new_message(self,message): 
-        self._on_event_new_message(message) 
+        self.on_event_new_message(message)
+
+    def event_new_signal(self,signal):
+        self.on_event_new_signal(signal) 
 
     def event_new_tick(self,env): 
-        self._on_event_new_tick(env) 
+        self.on_event_new_tick(env) 
 
 
     def __repr__(self):

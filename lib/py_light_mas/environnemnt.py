@@ -1,16 +1,13 @@
-
-
-
 class Environnemnt: 
 
-    def _on_event_new_tick(self):
+    def on_event_new_tick(self):
         pass 
 
-    def _on_event_show(self):
+    def on_event_show(self):
         pass 
 
     def event_new_tick(self):
-        self._on_event_new_tick()
+        self.on_event_new_tick()
 
     def event_show(self):
-        self._on_event_show() 
+        self.on_event_show() 

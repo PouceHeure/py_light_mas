@@ -1,6 +1,15 @@
 
 
 
+class Signal: 
+
+    END_TASK = 0
+
+    def __init__(self,sender="",dest="",content=None):
+        self.agent_from = sender
+        self.agent_to = dest
+        self.content = content 
+
 class Message: 
 
     def __init__(self,sender="",dest="",content=None): 

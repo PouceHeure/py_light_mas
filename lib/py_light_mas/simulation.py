@@ -2,6 +2,7 @@
 import abc 
 import time 
 
+from .agent import Agent
 from .environnemnt import Environnemnt
 
 class Simulation: 
@@ -11,18 +12,20 @@ class Simulation:
         self._is_ok = True
         self._agents = []
 
+        Agent.SIMULATION = self 
+
     def add_agent(self,agent):
         self._agents.append(agent)
 
-    def _run(self):
+    def run(self):
         for agent in self._agents: 
             agent.event_new_tick(self._env)
         self._env.event_new_tick()
         self._env.event_show()
 
-    def run(self,wait_s=1):
+    def run_loop(self,wait_s=1):
         self._is_ok = True 
         while(self._is_ok):
-            self._run()
+            self.run_loop()
             time.sleep(wait_s)
         

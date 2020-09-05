@@ -64,7 +64,7 @@ class RoadEnvironnemnt(Environnemnt):
                  RoadEnvironnemnt.rect_W,RoadEnvironnemnt.rect_H)
         )
 
-    def _on_event_show(self):
+    def on_event_show(self):
         for line in range(len(self._road)):
             road = self._road[line]
             for i in range(len(road)):
@@ -79,7 +79,7 @@ class CarAgent(Agent):
         super(CarAgent, self).__init__(**kargs)
         self._run = True
 
-    def _on_event_new_tick(self,env):
+    def on_event_new_tick(self,env):
         import random
         road = env.get_road(self)
         position = env.get_position(self)
@@ -96,7 +96,7 @@ class CarAgent(Agent):
         else: 
             print("stop")
 
-    def _on_event_new_message(self,message):
+    def on_event_new_message(self,message):
         self._run = False
 
 class CarSimulation(Simulation):
@@ -108,24 +108,23 @@ class CarSimulation(Simulation):
         for i in range(10):
             a1 = CarAgent(name=f"agent_a{i}")
             a1.connect(network)
-            self.add_agent(a1)
             self._env.add_car(a1)
 
         self._env.init_ui()
         self._env.init_road()
 
 if __name__ == "__main__":
-    sim = CarSimulation(length_road=30)
     pygame.init()
+    sim = CarSimulation(length_road=30)
+    
     i = 0 
     while True:
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
                 pygame.quit()
         
-        sim._run()
+        sim.run()
         pygame.display.update()
-        #pygame.image.save(sim._env._display,f"img/{i}.png")
         pygame.time.wait(100)
         i += 1
     
