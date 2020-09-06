@@ -82,6 +82,8 @@ class Agent:
             return
         message_reply = copy.copy(message)
         message_reply.content = content
+        message_reply.agent_to = message_reply.agent_from
+        message_reply.agent_from = self._address
         self.send_message(message_reply)
 
     @abc.abstractmethod

@@ -19,11 +19,12 @@ class Simulation:
     def run(self):
         for agent in self._agents:
             agent.event_new_tick(self._env)
-        self._env.event_new_tick()
-        self._env.event_show()
+        if(self._env != None):
+            self._env.event_new_tick()
+            self._env.event_show()
 
     def run_loop(self,wait_s=1):
         self._is_ok = True
         while(self._is_ok):
-            self.run_loop()
+            self.run()
             time.sleep(wait_s)
