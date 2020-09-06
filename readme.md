@@ -115,6 +115,8 @@ sim.run_loop()
 
 ## examples 
 
+:warning: examples use pygame=1.9.6
+
 ### car [./examples/horse/](./examples/horse/) 
 
 ![example-horse](.doc/horse.gif)
