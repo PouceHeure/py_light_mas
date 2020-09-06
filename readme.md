@@ -18,6 +18,7 @@
   - [examples](#examples)
     - [car ./examples/horse/](#car-exampleshorse)
     - [robot ./examples/robot/](#robot-examplesrobot)
+    - [morse ./examples/morse/](#morse-examplesmorse)
 
 ## architecture 
 
@@ -124,3 +125,26 @@ sim.run_loop()
 ### robot [./examples/robot/](./examples/robot/) 
 
 ![example-robot](.doc/robot.gif)
+
+### morse [./examples/morse/](./examples/morse/) 
+
+``` bash 
+[name: agent_A_01 address: team_A/192.168.0.0 network: ://team_A aid: 0 type: SenderAgent] success connection to: team_A
+[name: agent_B_01 address: team_B/192.168.0.0 network: ://team_B aid: 1 type: ReplierAgent] success connection to: team_B
+from: team_A/192.168.0.0 to: team_B/192.168.0.0 content: __...._.__._..__..
+from: team_B/192.168.0.0 to: team_A/192.168.0.0 content: ok __...._.__._..__..
+from: team_A/192.168.0.0 to: team_B/192.168.0.0 content: _..__...
+from: team_B/192.168.0.0 to: team_A/192.168.0.0 content: ok _..__...
+from: team_A/192.168.0.0 to: team_B/192.168.0.0 content: ._.___.___...___.
+from: team_B/192.168.0.0 to: team_A/192.168.0.0 content: ok ._.___.___...___.
+from: team_A/192.168.0.0 to: team_B/192.168.0.0 content: .____._.______...
+from: team_B/192.168.0.0 to: team_A/192.168.0.0 content: ok .____._.______...
+from: team_A/192.168.0.0 to: team_B/192.168.0.0 content: ....___.
+from: team_B/192.168.0.0 to: team_A/192.168.0.0 content: ok ....___.
+from: team_A/192.168.0.0 to: team_B/192.168.0.0 content: ___.____.___
+from: team_B/192.168.0.0 to: team_A/192.168.0.0 content: ok ___.____.___
+from: team_A/192.168.0.0 to: team_B/192.168.0.0 content: .._.__...
+from: team_B/192.168.0.0 to: team_A/192.168.0.0 content: ok .._.__...
+from: team_A/192.168.0.0 to: team_B/192.168.0.0 content: __.
+from: team_B/192.168.0.0 to: team_A/192.168.0.0 content: ok __.
+```

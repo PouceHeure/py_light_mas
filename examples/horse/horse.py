@@ -1,6 +1,6 @@
 
 """
-Simple CAR example.
+Simple horse example.
 Build N agent (i.e. car), each agent have to run straight ahead until the next obstacle.
 """
 
