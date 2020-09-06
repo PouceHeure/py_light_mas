@@ -27,3 +27,7 @@ on_event_new_tick(self,env)
 ### car [./examples/car/](./examples/car/) 
 
 ![example-car](.doc/car.gif)
+
+### robot [./examples/robot/](./examples/robot/) 
+
+![example-car](.doc/robot.gif)
