@@ -2,8 +2,9 @@
 
 class Signal:
 
-    V_STOP = 0
-    V_END_TASK = 1
+    V_BEGIN = 0
+    V_STOP = 1
+    V_END_TASK = 2
 
     def __init__(self, sender="", dest="", value=None):
         self.agent_from = sender
