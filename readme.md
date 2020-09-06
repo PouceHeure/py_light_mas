@@ -43,7 +43,7 @@ class YourSimulation(Simulation):
         (...)
 ```
 
-:warning: all agents need to be declared after this calls `super(YourSimulation, self).__init__(**kargs)`, during the parent init call Agent class and informe who is the simulation. 
+:warning: all agents need to be declared after this call `super(YourSimulation, self).__init__(**kargs)`, during the parent init call Agent class and informe who is the simulation. 
 
 
 ### create environnment 
