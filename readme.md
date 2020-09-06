@@ -16,7 +16,7 @@
     - [create a network](#create-a-network)
     - [run simulation](#run-simulation)
   - [examples](#examples)
-    - [car ./examples/horse/](#car-exampleshorse)
+    - [horse ./examples/horse/](#horse-exampleshorse)
     - [robot ./examples/robot/](#robot-examplesrobot)
     - [morse ./examples/morse/](#morse-examplesmorse)
 
@@ -116,17 +116,22 @@ sim.run_loop()
 
 ## examples 
 
-:warning: examples use pygame=1.9.6
+:warning: some examples use pygame=1.9.6
 
-### car [./examples/horse/](./examples/horse/) 
-
+### horse [./examples/horse/](./examples/horse/) 
+> each horse goes straight until one touch the obstacle 
+ 
 ![example-horse](.doc/horse.gif)
 
 ### robot [./examples/robot/](./examples/robot/) 
+> robots (black rectangles) research resources (blue rectangles). 
+
 
 ![example-robot](.doc/robot.gif)
 
 ### morse [./examples/morse/](./examples/morse/) 
+
+> 2 agents connected at 2 differents network speak together, one send morse message and the second reply with: 'ok + the same content'
 
 ``` bash 
 [name: agent_A_01 address: team_A/192.168.0.0 network: ://team_A aid: 0 type: SenderAgent] success connection to: team_A
