@@ -26,8 +26,8 @@ class RoadEnvironnemnt(Environnemnt):
         CELL_OBSTACLE: (255, 0, 0)
     }
 
-    rect_H = 10
-    rect_W = 10
+    RECT_H = 10
+    RECT_W = 10
 
     def __init__(self, length_road, **kargs):
         super(RoadEnvironnemnt, self).__init__(**kargs)
@@ -40,7 +40,7 @@ class RoadEnvironnemnt(Environnemnt):
     def init_ui(self):
         n_cars = len(self._cars_position)
         self._display = pygame.display.set_mode(
-            (RoadEnvironnemnt.rect_W*self._length_road, RoadEnvironnemnt.rect_H*n_cars))
+            (RoadEnvironnemnt.RECT_W*self._length_road, RoadEnvironnemnt.RECT_H*n_cars))
 
     def init_road(self):
         board = []
@@ -71,14 +71,13 @@ class RoadEnvironnemnt(Environnemnt):
         self._update_road()
 
     def _draw_rectangle(self, line, position, color):
-        left = RoadEnvironnemnt.rect_W*position
-        top = RoadEnvironnemnt.rect_H*line
+        left = RoadEnvironnemnt.RECT_W*position
+        top = RoadEnvironnemnt.RECT_H*line
         pygame.draw.rect(self._display, color,
                          (
-                             left, top,
-                             RoadEnvironnemnt.rect_W, RoadEnvironnemnt.rect_H
-                         )
-                         )
+                            left, top,
+                            RoadEnvironnemnt.RECT_W, RoadEnvironnemnt.RECT_H
+                         ))
 
     def on_event_show(self):
         for line in range(len(self._road)):
@@ -117,7 +116,6 @@ class CarAgent(Agent):
 
     def on_event_new_signal(self, signal):
         print(signal)
-
 
 class HorseSimulation(Simulation):
 

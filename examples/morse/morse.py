@@ -1,6 +1,6 @@
 import random  
 
-from py_light_mas.message import Message
+from py_light_mas.message import Message, Signal
 from py_light_mas.agent import Agent
 from py_light_mas.network import Network
 from py_light_mas.simulation import Simulation
@@ -10,7 +10,6 @@ class WorldEnvironnment(Environnemnt):
 
     def __init__(self,grid_size,**kargs):
         super(WorldEnvironnment, self).__init__(**kargs)
-    
     
     def on_event_show(self):
         pass 

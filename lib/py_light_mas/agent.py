@@ -56,7 +56,7 @@ class Agent:
         if(not address is None):
             self._network = network
             self._address = address
-            print(f"[{self}] success connection to: {network.get_name()}")
+            #print(f"[{self}] success connection to: {network.get_name()}")
         else:
             print(f"fail to connect: {network.get_name()}")
 
