@@ -1,21 +1,22 @@
 
 
+class Signal:
 
-class Signal: 
+    V_STOP = 0
+    V_END_TASK = 1
 
-    END_TASK = 0
-
-    def __init__(self,sender="",dest="",content=None):
+    def __init__(self, sender="", dest="", value=None):
         self.agent_from = sender
         self.agent_to = dest
-        self.content = content 
+        self.value = value
 
-class Message: 
 
-    def __init__(self,sender="",dest="",content=None): 
+class Message:
+
+    def __init__(self, sender="", dest="", content=None):
         self.agent_from = sender
         self.agent_to = dest
-        self.content = content 
+        self.content = content
 
     def __repr__(self):
         return f"from: {self.agent_from} to: {self.agent_to} content: {self.content}"

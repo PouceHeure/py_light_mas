@@ -1,4 +1,3 @@
-
 import abc 
 import time 
 
@@ -6,13 +5,15 @@ from .agent import Agent
 from .environnemnt import Environnemnt
 
 class Simulation: 
+    """manage all events (agent/env.)
+    """
 
     def __init__(self,env=None): 
         self._env = env
         self._is_ok = True
         self._agents = []
 
-        Agent.SIMULATION = self 
+        Agent.SIMULATION = self
 
     def add_agent(self,agent):
         self._agents.append(agent)
