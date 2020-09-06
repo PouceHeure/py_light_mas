@@ -131,7 +131,7 @@ sim.run_loop()
 
 ### morse [./examples/morse/](./examples/morse/) 
 
-> 2 agents connected at 2 differents network speak together, one send morse message and the second reply with: 'ok + the same content'
+> 2 agents are connected at 2 differents network speak together, one sends morse message and the second replies with: 'ok + the same content'
 
 ``` bash 
 [name: agent_A_01 address: team_A/192.168.0.0 network: ://team_A aid: 0 type: SenderAgent] success connection to: team_A
