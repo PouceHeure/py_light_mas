@@ -119,10 +119,10 @@ class CarAgent(Agent):
         print(signal)
 
 
-class CarSimulation(Simulation):
+class HorseSimulation(Simulation):
 
     def __init__(self, length_road=20, **kargs):
-        super(CarSimulation, self).__init__(**kargs)
+        super(HorseSimulation, self).__init__(**kargs)
         self._env = RoadEnvironnemnt(length_road)
         network = Network("localhost")
         for _i in range(10):
@@ -136,7 +136,7 @@ class CarSimulation(Simulation):
 
 if __name__ == "__main__":
     pygame.init()
-    sim = CarSimulation(length_road=30)
+    sim = HorseSimulation(length_road=30)
 
     i = 0
     while True:

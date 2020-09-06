@@ -16,7 +16,7 @@
     - [create a network](#create-a-network)
     - [run simulation](#run-simulation)
   - [examples](#examples)
-    - [car ./examples/car/](#car-examplescar)
+    - [car ./examples/horse/](#car-exampleshorse)
     - [robot ./examples/robot/](#robot-examplesrobot)
 
 ## architecture 
@@ -115,10 +115,10 @@ sim.run_loop()
 
 ## examples 
 
-### car [./examples/car/](./examples/car/) 
+### car [./examples/horse/](./examples/horse/) 
 
-![example-car](.doc/car.gif)
+![example-horse](.doc/horse.gif)
 
 ### robot [./examples/robot/](./examples/robot/) 
 
-![example-car](.doc/robot.gif)
+![example-robot](.doc/robot.gif)
