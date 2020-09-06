@@ -1,4 +1,3 @@
-
 from .message import Message, Signal
 
 

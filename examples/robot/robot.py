@@ -1,4 +1,6 @@
 import pygame
+import copy 
+import random
 
 from py_light_mas.agent import Agent
 from py_light_mas.network import Network
@@ -39,7 +41,7 @@ class GridEnvironnemnt(Environnemnt):
         nb_cells_resource = int(grid_size*grid_size*percent_resource)
 
         cells_fill = 0 
-        import random
+      
         while(cells_fill < nb_cells_resource): 
             i = random.randint(0,grid_size-1)
             j = random.randint(0,grid_size-1)
@@ -55,7 +57,7 @@ class GridEnvironnemnt(Environnemnt):
         return display
 
     def add_robot(self,robot_agent):
-        import random
+        
         i = random.randint(0,self._grid_size-1)
         j = random.randint(0,self._grid_size-1)
         position = [i,j]
@@ -69,8 +71,7 @@ class GridEnvironnemnt(Environnemnt):
                          (
                              left, top,
                              GridEnvironnemnt.RECT_W, GridEnvironnemnt.RECT_H
-                         )
-                         )
+                         ))
 
     def get_cell(self,i,j): 
         if(i < 0 or j < 0 or i >= self._grid_size or j >= self._grid_size): 
@@ -94,7 +95,7 @@ class GridEnvironnemnt(Environnemnt):
             self._agents_position[agent] = new_position
     
     def on_event_show(self):
-        import copy 
+        
         grid_with_robots = copy.copy(self._grid)
 
         for line in range(len(grid_with_robots)):
@@ -105,7 +106,7 @@ class GridEnvironnemnt(Environnemnt):
                 self._draw_rectangle(line, _i, color)
 
         color = GridEnvironnemnt.MAP_COLORS[GridEnvironnemnt.CELL_ROBOT_CURRENT]
-        for robot, positions in self._agents_position.items():  
+        for _, positions in self._agents_position.items():  
             grid_with_robots[positions[0]][positions[1]] =  GridEnvironnemnt.CELL_ROBOT
             self._draw_rectangle(positions[0], positions[1],color)
 
@@ -113,8 +114,11 @@ class RobotAgent(Agent):
 
     def __init__(self, **kargs):
         super(RobotAgent, self).__init__(**kargs)
+        self._resources = 100
         
     def on_event_new_tick(self, env):
+        if(self._resources == 0):
+            return 
         cells = env.ask_env(self)
         actions = [[-1,0],
                    [+1,0],
@@ -123,12 +127,12 @@ class RobotAgent(Agent):
 
         action = None
         if(GridEnvironnemnt.CELL_RESOURCE in cells):
+            self._resources += 1
             index_resource = cells.index(GridEnvironnemnt.CELL_RESOURCE)
             action = actions[index_resource]
         else: 
-            import random
+            self._resources -= 1
             action = random.choice(actions)
-        
         env.ask_move_to_relatif(self,action)
 
     def on_event_new_message(self, message):
