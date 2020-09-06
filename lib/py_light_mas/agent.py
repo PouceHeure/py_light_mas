@@ -13,6 +13,7 @@ class Agent:
         self._name = name
         self._address = None
         self._network = None
+        self._slots_signal = {}
 
         self._aid = Agent.COUNTER
         Agent.COUNTER += 1
@@ -71,6 +72,16 @@ class Agent:
             return
         self._network.send_message(message)
 
+    def send_signal(self, signal):
+        """send the message accross the network
+
+        Args:
+            signal (Signal): gathering sender, dest and content
+        """
+        if(not self._guard_network("send_signal")):
+            return
+        self._network.send_signal(signal)
+
     def reply_message(self, message, content):
         """reply the message given with the content
 
@@ -85,6 +96,9 @@ class Agent:
         message_reply.agent_to = message_reply.agent_from
         message_reply.agent_from = self._address
         self.send_message(message_reply)
+
+    def connect_slot(self,kind,function): 
+        self._slots_signal[kind] = function 
 
     @abc.abstractmethod
     def on_event_new_message(self, message):
@@ -114,6 +128,10 @@ class Agent:
         self.on_event_new_message(message)
 
     def event_new_signal(self, signal):
+        kind = signal.kind 
+        if(kind in self._slots_signal.keys()): 
+            event = self._slots_signal[kind]
+            event()
         self.on_event_new_signal(signal)
 
     def event_new_tick(self, env):
