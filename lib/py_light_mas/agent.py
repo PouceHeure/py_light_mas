@@ -38,6 +38,14 @@ class Agent:
         return self._address
 
     def _guard_network(self, method_name):
+        """check connection
+
+        Args:
+            method_name (string): method needing to use network 
+
+        Returns:
+            bool: True= can use the network 
+        """
         if(self._network is None):
             print(f"can't use {method_name} without connection")
             return False
@@ -98,6 +106,12 @@ class Agent:
         self.send_message(message_reply)
 
     def connect_slot(self,kind,function): 
+        """connection function to 'kind' signal 
+
+        Args:
+            kind (int): int from signal static variables Signal.V_*
+            function (function): function to call 
+        """
         self._slots_signal[kind] = function 
 
     @abc.abstractmethod
