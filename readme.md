@@ -119,7 +119,7 @@ sim.run_loop()
 :warning: some examples use pygame=1.9.6
 
 ### horse [./examples/horse/](./examples/horse/) 
-> each horse goes straight until one touch the obstacle 
+> each horse goes straight until one touch the finish line 
  
 ![example-horse](.doc/horse.gif)
 
@@ -131,7 +131,7 @@ sim.run_loop()
 
 ### morse [./examples/morse/](./examples/morse/) 
 
-> 2 agents are connected at 2 differents network speak together, one sends morse message and the second replies with: 'ok + the same content'
+> 2 agents are connected on 2 differents networks, one sends morse message and the second replies with: 'ok + the same content'
 
 ``` bash 
 [name: agent_A_01 address: team_A/192.168.0.0 network: ://team_A aid: 0 type: SenderAgent] success connection to: team_A
